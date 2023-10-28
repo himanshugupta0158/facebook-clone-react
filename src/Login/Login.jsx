@@ -24,7 +24,21 @@ export const Login = () => {
             navigate("/");
         })
         .catch((e) => {
+            if(e.message === "The password is invalid or the user does not have password")
+        {
+            alert("Please check your credentials again");
+        }
+        else if (e.message === "There is no user record corresponding to this indentifier. The user may have been deleted."){
+            navigate("/register");
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                left : 0,
+                behavior : "smooth",
+            });
+        }
+        else {
             alert(e.message);
+        }
         })
 
     };

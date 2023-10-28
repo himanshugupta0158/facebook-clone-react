@@ -11,7 +11,7 @@ export const LoginHeader = () => {
           </div>
       </Link>
       
-      <Link className="register" to="/register">
+      <Link to="/register">
           <button className="header__button">
             Create New Account
           </button>
