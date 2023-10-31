@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import './Login.css';
 import {Link} from 'react-router-dom';
 import { auth } from '../firebase-config';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import {useNavigate} from 'react-router-dom';
 
 export const Login = () => {
@@ -18,7 +17,7 @@ export const Login = () => {
         // const auth = getAuth();
 
         // Sign in the user with their email address and password
-        signInWithEmailAndPassword(auth, email, password)
+        auth.signInWithEmailAndPassword(email, password)
         .then((auth_data) => {
             console.log(auth_data);
             navigate("/");

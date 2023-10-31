@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import "./Register.css";
 import { auth, db } from "../firebase-config";
 import { useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword, updateProfile} from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
 
 export const Register = () => {
   const navigate = useNavigate("");
@@ -18,12 +16,14 @@ export const Register = () => {
 
     e.preventDefault();
 
+    
+
     // Create a new user with the provided information
-    createUserWithEmailAndPassword(auth, email, password)
+    auth.createUserWithEmailAndPassword(email, password)
     .then((user_auth) => {
         const user = user_auth.user;
         if(user) {
-            updateProfile(user, {
+            user.updateProfile({
                 displayName : firstname + " "+ lastname,
             }).then((s) => {
                 // Save the user's details to the database , It requires permission from firebase firestore.
